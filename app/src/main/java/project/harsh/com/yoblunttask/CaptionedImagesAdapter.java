@@ -21,7 +21,7 @@ import java.util.List;
 public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder>{
 
     List<CardData> cardDatas;
-    public CaptionedImagesAdapter(List<CardData> cardDatas){
+    public CaptionedImagesAdapter(List<CardData> cardDatas){//Constructor
      this.cardDatas=cardDatas;
 
     }
@@ -33,11 +33,12 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
         return new ViewHolder(cardView);
 
     }
-
+/*--------------Setting values to all views---------------------------*/
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         CardView cardView=holder.cardView;
         ImageView imageView= cardView.findViewById((R.id.info_image));
+        //Using glide library for thumbnails
         Glide.with(cardView.getContext()).load(cardDatas.get(position).imgUrl)
                 .thumbnail(0.5f)
                 .crossFade()
@@ -53,7 +54,7 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
         textViewDes.setText(cardDatas.get(position).description);
 
     }
-
+/*--------------------------the total number of elements----------*/
     @Override
     public int getItemCount() {
         return cardDatas.size();

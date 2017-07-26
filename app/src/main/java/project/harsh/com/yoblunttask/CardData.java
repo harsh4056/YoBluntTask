@@ -1,13 +1,15 @@
 package project.harsh.com.yoblunttask;
 
 
+import android.support.annotation.NonNull;
+
 import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by moon on 26/7/17.
  */
 
-public class CardData {
+public class CardData implements Comparable<CardData>{
 
     public String tag,description,imgUrl;
     public LatLng latLng;
@@ -25,5 +27,15 @@ public class CardData {
     }
 
 
+    @Override
+    public int compareTo(@NonNull CardData cardData) {
+        if(this.distanceToOrigin== cardData.distanceToOrigin)
+        return  0;
+        else if(this.distanceToOrigin>cardData.distanceToOrigin)
+            return 1;
+        else
+            return -1;
 
+
+    }
 }
